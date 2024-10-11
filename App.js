@@ -8,12 +8,16 @@ const App = () => {
   const [fromSelected, setFromSelected] = useState("Binary");
   const [toSelected, setToSelected] = useState("Decimal");
   const [inputValue, setInputValue] = useState("");
+  const [emptyInput, setemptyInput] = useState("false");
   const [error, setError] = useState(false);
   const [resultVisible, setResultVisible] = useState(false);
   const [answer, setAnswer] = useState("");
 
   const handleInput = (number) => {
     setInputValue(number);
+    if (number==="") {
+      setAnswer("")
+    }
   };
 
   const handleConvertion = () => {
@@ -36,6 +40,7 @@ const App = () => {
               setAnswer(inputValue);
           }
           setResultVisible(true);
+          setemptyInput(false)
         } else {
           setError(true);
         }
@@ -57,6 +62,7 @@ const App = () => {
               setAnswer(inputValue);
           }
           setResultVisible(true);
+          setemptyInput(false)
         } else {
           setError(true);
         }
@@ -78,6 +84,7 @@ const App = () => {
               setAnswer(inputValue);
           }
           setResultVisible(true);
+          setemptyInput(false)
         } else {
           setError(true);
         }
@@ -99,10 +106,19 @@ const App = () => {
               setAnswer(inputValue);
           }
           setResultVisible(true);
+          setemptyInput(false)
         } else {
           setError(true);
         }
         break; // Added break statement
+    }
+
+    if (inputValue==="") {
+      setemptyInput(true)
+      setResultVisible(false);
+    }else{
+      setemptyInput(false)
+      setResultVisible(true);
     }
   };
 
@@ -139,13 +155,15 @@ const App = () => {
           <Picker.Item label="Hexadecimal" value="Hexadecimal" />
         </Picker>
       </View>
-
       </View>
 
       <Text style={{fontSize:20}}>Enter the number</Text>
-      <TextInput style={styles.input} onChangeText={handleInput} placeholder="Type your number" />
+      <TextInput style={styles.input} onChangeText={handleInput} placeholder={`Enter your ${fromSelected} number`} />
       <View>
         {error && <Text style={styles.error}>Invalid {fromSelected} number</Text>}
+      </View>
+      <View>
+        {emptyInput && <Text style={styles.emptyInput}>You have to input a number</Text>}
       </View>
       <Button style={styles.convert} title="CONVERT" onPress={handleConvertion} />
       <View style={styles.result}>

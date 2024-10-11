@@ -21,12 +21,11 @@ const styles = StyleSheet.create({
   picker:{
     height:50,
     width:150,
-    backgroundColor:"purple",
+    backgroundColor:"#6200ea",
    color:"white"
    
   },
   type:{
-  flex:1,
   flexDirection:"row",
   justifyContent:"center",
   paddingTop:30,
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
   },
   to:{
     fontSize:20,
-    color:"red",
+    color:"black",
     textAlign: "center", 
     alignSelf: "center", 
     marginHorizontal: 5,
@@ -58,6 +57,13 @@ const styles = StyleSheet.create({
     elevation: 2, 
     marginBottom:20
     
+  },
+  emptyInput:{
+    color: 'red', 
+    fontSize: 16,
+    marginTop: 10, 
+    textAlign: 'center', 
+    fontWeight: 'bold', 
   },
   error:{
     color: 'red', 
